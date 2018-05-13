@@ -3,10 +3,9 @@ Service for collecting meter readings
 
 # Road map:
 
-1) ~~Create repsitory ~~
+1) Create repsitory - Done
+2) Load skeleton of app - Done
 
-- создать репозиторий.
-- загрузить скелет приложения
 - создать страницу логина
 - настроить базу данных.
 - создать таблицы
