@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, browserHistory, Route } from 'react-router';
 import App from './containers/App';
-import Order from './containers/OrderContainer';
+import Login from './containers/LoginContainer';
 import Content from './containers/ContentContainer';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
@@ -19,7 +19,7 @@ render(
         <Router history={browserHistory} >
             <Route component={App}>
                 <Route path="/" component={Content} />
-                <Route path="order" component={Order} />
+                <Route path="login" component={Login} />
             </Route>
         </Router>
     </Provider>,
