@@ -3,7 +3,7 @@ Service for collecting meter readings
 
 # Road map:
 
-- ~~Create repsitory ~~
+1) ~~Create repsitory ~~
 
 - создать репозиторий.
 - загрузить скелет приложения
