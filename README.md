@@ -5,6 +5,7 @@ Service for collecting meter readings
 
 1) Create repsitory - Done
 2) Load skeleton of app - Done
+3) Tune menu - Done
 
 - создать страницу логина
 - настроить базу данных.

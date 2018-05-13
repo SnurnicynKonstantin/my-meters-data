@@ -4,50 +4,16 @@ import { Link } from 'react-router';
 
 class MenuContainer extends Component {
 
-    getCount() {
-        let counter = 0;
-        this.props.basket.forEach(function(item) {
-            counter += item.price * item.counter;
-        });
-        return counter;
-    }
-
     render() {
-        // <li id="koktely_button">
-        //     <a href="#">Молочные коктейли</a>
-        // </li>
-        console.log('PATH', this.props.location);
         return (
-            <div className="top_menu">
-                <div className="block_inner">
-                    { this.props.location.pathname == "/" ?
-                        <ul>
-                            <li id="shashlik_button">
-                                <a href="#">Шашлык</a>
-                            </li>
-                            <li id="pizza_button">
-                                <a href="#">Пицца</a>
-                            </li>
-                            <li id="hachapuri_button">
-                                <a href="#">Хачапури</a>
-                            </li>
-                            <li id="shaurma_button">
-                                <a href="#">Шаурма</a>
-                            </li>
-
-                            <li id="napitki_button">
-                                <a href="#">Напитки</a>
-                            </li>
-                        </ul>
-                        :
-                        <ul>
-                            <li>
-                                <Link to={`/`}>На главную</Link>
-                            </li>
-                        </ul>
-                    }
+            <nav className="site-header sticky-top py-1">
+                <div className="container d-flex flex-column flex-md-row justify-content-start">
+                    <Link to={`/`} className="py-2">Лого</Link>
+                    <Link to={`/`} className="py-2">Мои показания</Link>
+                    <Link to={`/`} className="py-2">                                   </Link>
+                    <Link to={`/`} className="py-2">Показания по дому</Link>
                 </div>
-            </div>
+            </nav>
         );
     }
 }

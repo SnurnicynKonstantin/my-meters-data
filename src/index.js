@@ -6,9 +6,10 @@ import { Router, browserHistory, Route } from 'react-router';
 import App from './containers/App';
 import Order from './containers/OrderContainer';
 import Content from './containers/ContentContainer';
-import './styles/style.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
+import './styles/custom-bootstrap.min.css';
+import './styles/style.css';
 import configureStore from './store/configureStore';
 
 const store = configureStore();
