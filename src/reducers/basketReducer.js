@@ -1,5 +1,4 @@
 import * as types from '../actions/actionTypes';
-import initialState from './initialState';
 import omit from 'lodash/omit';
 import assign from 'lodash/assign';
 import mapValues from 'lodash/mapValues';
