@@ -29,3 +29,5 @@ Service for collecting meter readings
 - изменение пароля
 - график показаний
 - отчёт в excel
+
+http://help.ubuntu.ru/wiki/apachemysqlphp#установка_mysql_и_его_модулей_для_php_5 - Дока по LAMP
