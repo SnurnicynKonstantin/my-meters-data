@@ -9,9 +9,7 @@ class ContentContainer extends Component {
     render() {
         return (
             <div className="banner_block">
-                <Slider/>
-                <GreenLegend/>
-                <Groups/>
+
             </div>
         );
     }

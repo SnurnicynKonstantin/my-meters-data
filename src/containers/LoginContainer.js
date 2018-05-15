@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 class LoginContainer extends Component {
 
     render() {
+        //    Make as on GitHub
         return (
             <form className="form-signin">
                 <div className="text-center mb-4">
@@ -22,7 +23,11 @@ class LoginContainer extends Component {
                     <label for="inputPassword"></label>
                 </div>
 
-                <button className="btn btn-lg btn-primary btn-block" type="submit">Вход</button>
+                <button className="btn btn-lg btn-primary btn-block mb-4" type="submit">Вход</button>
+
+                <div className="text-center">
+                    <p>Есть вопросы? Обращайтесь ks_on_v@mail.ru</p>
+                </div>
             </form>
         );
     }

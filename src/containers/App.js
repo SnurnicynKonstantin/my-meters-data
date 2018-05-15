@@ -13,7 +13,6 @@ class App extends Component {
         return (
             <div className="main">
                 <Menu location={this.props.location}/>
-                <Head/>
                 {this.props.children}
                 <Footer/>
             </div>

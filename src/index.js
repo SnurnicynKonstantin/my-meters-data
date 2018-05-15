@@ -19,8 +19,8 @@ render(
         <Router history={browserHistory} >
             <Route component={App}>
                 <Route path="/" component={Content} />
-                <Route path="login" component={Login} />
             </Route>
+            <Route path="login" component={Login} />
         </Router>
     </Provider>,
     document.getElementById('app')
