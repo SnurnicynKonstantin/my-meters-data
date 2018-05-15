@@ -3,14 +3,14 @@ Service for collecting meter readings
 
 # Road map:
 
-1) Create repsitory - Done
+1) Create repository - Done
 2) Load skeleton of app - Done
 3) Tune menu - Done
 4) Page Login - Done
 5) Footer - Done
+6) Fix text in footer - Done
+7) Add button 'exit' - Done
 
-- добавить кнопку выхода из личного кабинета
-- выровнять текст в футере
 - настроить базу данных.
 - создать таблицы
 - сделать авторизацию
