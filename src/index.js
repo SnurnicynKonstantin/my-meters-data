@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { Router, browserHistory, Route } from 'react-router';
 import App from './containers/App';
 import Login from './containers/LoginContainer';
-import Content from './containers/ContentContainer';
+import MyMeters from './containers/MyMetersContainer';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
 import './styles/custom-bootstrap.min.css';
@@ -18,7 +18,7 @@ render(
     <Provider store={store}>
         <Router history={browserHistory} >
             <Route component={App}>
-                <Route path="/" component={Content} />
+                <Route path="/" component={MyMeters} />
             </Route>
             <Route path="login" component={Login} />
         </Router>
