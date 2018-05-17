@@ -36,7 +36,18 @@ class LoginContainer extends Component {
 
 
    render() {
-       //    Make as on GitHub
+
+        if(localStorage.getItem('token')) {
+            this.props.history.push('/');
+        }
+
+       const alertElem = <div className="alert alert-danger alert-dismissible fade show"  role="alert">
+                                            Введены некорректные данные
+                                            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>;
+
        return (
            <form className="form-signin">
                <div className="text-center mb-4">
@@ -44,6 +55,8 @@ class LoginContainer extends Component {
                    <h1 className="h3 mb-3 font-weight-normal">Войти</h1>
                    <p></p>
                </div>
+
+               {this.props.loginResult.loginStatus == false ? alertElem : ''}
 
                <div className="form-label-group">
                    <input type="text" id="inputEmail" className="form-control" placeholder="Номер квартиры" required="" autofocus="" onChange={this.nameChangeHandler}></input>
@@ -66,8 +79,9 @@ class LoginContainer extends Component {
 }
 
 function mapStateToProps (state) {
+
     return {
-//        user: null//state.user
+        loginResult: state.login
     };
 }
 

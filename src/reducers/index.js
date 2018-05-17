@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import basket from './basketReducer';
+import login from './loginReducer';
 
 const rootReducer = combineReducers({
-    basket
+    login
 });
 
 export default rootReducer;

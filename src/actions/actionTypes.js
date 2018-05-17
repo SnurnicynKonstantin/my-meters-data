@@ -5,4 +5,5 @@
 //export const DECREMENT_COUNT = 'DECREMENT_COUNT';
 //export const CLEAR_ORDER = 'CLEAR_ORDER';
 
-export const LOGIN = 'LOGIN';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';

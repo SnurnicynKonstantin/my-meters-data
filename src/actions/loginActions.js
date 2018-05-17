@@ -1,25 +1,14 @@
 import loginApi from '../api/loginApi';
 import * as types from './actionTypes';
 
-//export function sendMail(data, basket) {
-//    return function(dispatch) {
-//        orderApi.sendMail(data, basket).then(
-//            dispatch(sendMailSuccess())
-//        );
-//        return dispatch(sendMailSuccess());
-//    }
-//}
-//
-//export function sendMailSuccess() {
-//    return {
-//        type: types.CLEAR_ORDER
-//    };
-//}
-
 export function login(user) {
     return function(dispatch) {
         return loginApi.login(user).then(res=>res.json()).then(res => {
-                    dispatch(loginSuccess(res));
+                    if(res.status == true) {
+                        dispatch(loginSuccess(res.token));
+                    } else {
+                        dispatch(loginFail());
+                    }
                 }).catch(error => {
                     console.log("ERROR", error);
                     throw(error);
@@ -27,9 +16,15 @@ export function login(user) {
     }
 }
 
-export function loginSuccess(user) {
-    console.log(user);
+export function loginSuccess(token) {
     return {
-        type: types.LOGIN
+        type: types.LOGIN_SUCCESS,
+        token
+    };
+}
+
+export function loginFail() {
+    return {
+        type: types.LOGIN_FAIL
     };
 }
