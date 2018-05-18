@@ -7,3 +7,6 @@
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
+
+export const METERS_SUCCESS = 'METERS_SUCCESS';
+export const METERS_FAIL = 'METERS_FAIL';
