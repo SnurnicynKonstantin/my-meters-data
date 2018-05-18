@@ -3,7 +3,8 @@ const serverApi = 'http://localhost/login.php';
 class LoginApi {
 
     static login(user) {
-        return fetch(serverApi + "?name=" + user.name + "&password=" + user.password, {
+    console.log(user);
+        return fetch(serverApi + "?street=" + user.street + "&room=" + user.room + "&password=" + user.password, {
             method: "GET",
             headers: {
                 'Accept': 'application/json',

@@ -5,19 +5,12 @@ import * as loginActions from '../actions/loginActions';
 
 class LoginContainer extends Component {
 
-    getInitialState() {
-        return {
-            name: '',
-            password: ''
-        }
-    }
-
     constructor(props) {
         super(props);
         let { dispatch } = this.props;
         this.loginActions = bindActionCreators(loginActions, dispatch);
 
-        this.nameChangeHandler = this.nameChangeHandler.bind(this);
+        this.roomChangeHandler = this.roomChangeHandler.bind(this);
         this.passwordChangeHandler = this.passwordChangeHandler.bind(this);
         this.loginHandler = this.loginHandler.bind(this);
     }
@@ -26,8 +19,9 @@ class LoginContainer extends Component {
        this.loginActions.login(this.state);
    }
 
-   nameChangeHandler(e) {
-       this.setState({name: e.target.value});
+   roomChangeHandler(e) {
+       this.setState({street: 1});
+       this.setState({room: e.target.value});
    }
 
    passwordChangeHandler(e) {
@@ -59,7 +53,7 @@ class LoginContainer extends Component {
                {this.props.loginResult.loginStatus == false ? alertElem : ''}
 
                <div className="form-label-group">
-                   <input type="text" id="inputEmail" className="form-control" placeholder="Номер квартиры" required="" autofocus="" onChange={this.nameChangeHandler}></input>
+                   <input type="text" id="inputEmail" className="form-control" placeholder="Номер квартиры" required="" autofocus="" onChange={this.roomChangeHandler}></input>
                    <label for="inputEmail"></label>
                </div>
 

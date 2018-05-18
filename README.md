@@ -14,6 +14,7 @@ Service for collecting meter readings
 9) Create Users table - Done
 10) Create authorization - Done (https://ru.stackoverflow.com/questions/413693/%D0%9A%D0%B0%D0%BA-%D0%B7%D0%B0%D1%88%D0%B8%D1%84%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D1%81%D1%82%D1%80%D0%BE%D0%BA%D1%83-%D0%B2-php - Шифрование)
 
+- выровнять ссылки в меню
 - создать таблицы (https://devexpress.github.io/devextreme-reactive/react/grid/docs/guides/editing/)
 - создать страницу личного кабинета (https://getbootstrap.com/docs/4.1/examples/dashboard/#)
 - создать страницу администратора
