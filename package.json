@@ -12,6 +12,9 @@
   },
   "author": "Snurnicyn Konstantin",
   "dependencies": {
+    "@devexpress/dx-react-core": "^1.2.0",
+    "@devexpress/dx-react-grid": "^1.2.0",
+    "@devexpress/dx-react-grid-bootstrap4": "^1.2.0",
     "babel-polyfill": "6.8.0",
     "bootstrap": "4.1.1",
     "bootstrap-daterangepicker": "^3.0.2",
@@ -47,6 +50,7 @@
     "autoprefixer": "^7.1.1",
     "babel-cli": "6.8.0",
     "babel-core": "6.8.0",
+    "babel-eslint": "^8.2.3",
     "babel-loader": "6.2.4",
     "babel-plugin-react-display-name": "2.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
