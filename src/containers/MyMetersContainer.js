@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as metersActions from '../actions/metersActions';
 import Table from '../components/myMeters/TableComponent';
+import Graphic from '../components/myMeters/GraphicComponent';
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-daterangepicker/daterangepicker.css';
@@ -30,7 +31,7 @@ class MyMetersContainer extends Component {
         return (
             <div className="container">
                <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                   <h1 className="h2">Мои показания</h1>
+                   <h1 className="h2">Мои показания (кв.{localStorage.getItem('roomNumber')})</h1>
                    <div className="btn-toolbar mb-2 mb-md-0">
                        <div className="btn-group mr-2">
                            <button className="btn btn-sm btn-outline-primary">Share</button>
@@ -45,14 +46,15 @@ class MyMetersContainer extends Component {
                    </div>
                </div>
                <Table meters={this.props.meters}></Table>
-               <h2 className="border-bottom pb-2">Графики</h2>
+               <h2 className="border-bottom pb-2 pt-5">Графики</h2>
+               <Graphic meters={this.props.meters}></Graphic>
             </div>
         );
     }
 }
 
 function mapStateToProps (state) {
-    console.log("State: ", state);
+    console.log(state);
     return {
         meters: state.meters
     };

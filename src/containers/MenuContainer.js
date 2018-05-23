@@ -35,7 +35,6 @@ class MenuContainer extends Component {
 
 function mapStateToProps (state) {
     return {
-        basket: state.basket
     };
 }
 

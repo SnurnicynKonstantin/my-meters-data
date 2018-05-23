@@ -1,86 +1,34 @@
 import React , { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
-import { Card } from 'reactstrap';
-import { EditingState } from '@devexpress/dx-react-grid';
-import { Grid, Table, TableHeaderRow, TableEditRow, TableEditColumn} from '@devexpress/dx-react-grid-bootstrap4';
-
-const getRowId = row => row.id;
+import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 
 
 class TableComponent extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            columns: [
-                { name: 'name', title: 'Name' },
-                { name: 'sex', title: 'Sex' },
-                { name: 'city', title: 'City' },
-                { name: 'car', title: 'Car' }
-            ],
-            rows: [
-                { name: 0, sex: 'DevExtreme', city: 'DevExpress', car: 'car'},
-                { name: 0, sex: 'DevExtreme', city: 'DevExpress', car: 'car'}
-            ]
-        };
-
-        this.commitChanges = this.commitChanges.bind(this);
-    }
-
-    commitChanges({ added, changed, deleted }) {
-        let { rows } = this.state;
-        if (added) {
-            const startingAddedId = rows.length > 0 ? rows[rows.length - 1].id + 1 : 0;
-            rows = [
-                ...rows,
-                ...added.map((row, index) => ({
-                    id: startingAddedId + index,
-                    ...row
-                }))
-            ];
-        }
-
-        if (changed) {
-            rows = rows.map(row => (changed[row.id] ? { ...row, ...changed[row.id] } : row));
-        }
-
-        if (deleted) {
-            const deletedSet = new Set(deleted);
-            rows = rows.filter(row => !deletedSet.has(row.id));
-        }
-
-        this.setState({ rows });
-    }
 
     render() {
-        const { rows, columns } = this.state;
+        var metersArray = [];
+        this.props.meters.forEach(function(element) {
+            metersArray.push({
+                hot_w: element.hot_w,
+                cold_w: element.cold_w,
+                gas: element.gas
+            });
+        });
 
-        return (
-            <Card>
-                <Grid
-                    rows={rows}
-                    columns={columns}
-                    getRowId={getRowId}
-                >
-                    <EditingState onCommitChanges={this.commitChanges} />
-                    <Table />
-                    <TableHeaderRow />
-                    <TableEditRow />
-                    <TableEditColumn
-                        showAddCommand
-                        showEditCommand
-                        showDeleteCommand
-                    />
-                </Grid>
-            </Card>
+        return  (
+            <BootstrapTable data={metersArray} striped hover>
+                  <TableHeaderColumn isKey dataField='hot_w'>Горячая вода</TableHeaderColumn>
+                  <TableHeaderColumn dataField='cold_w'>Холодная вода</TableHeaderColumn>
+                  <TableHeaderColumn dataField='gas'>Газ</TableHeaderColumn>
+              </BootstrapTable>
         );
     }
 }
 
 function mapStateToProps (state) {
     return {
-         basket: state.basket
+         meters: state.meters
     };
 }
 

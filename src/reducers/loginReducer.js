@@ -9,6 +9,7 @@ export default function loginReducer(state = {}, action) {
 
         case types.LOGIN_SUCCESS: {
             localStorage.setItem('token', action.token);
+            localStorage.setItem('roomNumber', action.room);
             return {
                 "loginStatus": true,
                 "token": action.token

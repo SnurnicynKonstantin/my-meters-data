@@ -7,6 +7,7 @@ import App from './containers/App';
 import Login from './containers/LoginContainer';
 import MyMeters from './containers/MyMetersContainer';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
 import './styles/custom-bootstrap.min.css';
 import './styles/style.css';

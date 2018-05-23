@@ -5,7 +5,7 @@ export function login(user) {
     return function(dispatch) {
         return loginApi.login(user).then(res=>res.json()).then(res => {
                     if(res.status == true) {
-                        dispatch(loginSuccess(res.token));
+                        dispatch(loginSuccess(res.token, user.room));
                     } else {
                         dispatch(loginFail());
                     }
@@ -16,10 +16,11 @@ export function login(user) {
     }
 }
 
-export function loginSuccess(token) {
+export function loginSuccess(token, room) {
     return {
         type: types.LOGIN_SUCCESS,
-        token
+        token,
+        room
     };
 }
 
