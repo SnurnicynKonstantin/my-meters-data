@@ -54,7 +54,6 @@ class MyMetersContainer extends Component {
 }
 
 function mapStateToProps (state) {
-    console.log(state);
     return {
         meters: state.meters
     };
