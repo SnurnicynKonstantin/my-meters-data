@@ -46,7 +46,7 @@ class MyMetersContainer extends Component {
                    </div>
                </div>
                <Table meters={this.props.meters}></Table>
-               <h2 className="border-bottom pb-2 pt-5">Графики</h2>
+               <h2 className="border-bottom pb-2 pt-5 text-center">Графики</h2>
                <Graphic meters={this.props.meters}></Graphic>
             </div>
         );
