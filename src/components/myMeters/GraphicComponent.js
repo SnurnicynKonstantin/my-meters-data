@@ -1,14 +1,13 @@
 import React , { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { AreaChart, Label, XAxis, YAxis, CartesianGrid, Tooltip, Area, Legend } from 'recharts';
+import dateHelper from '../../helpers/dateHelper';
 
 class GraphicComponent extends Component {
 
     constructor(props) {
         super(props);
         this.calculateData = this.calculateData.bind(this);
-        this.calculateDate = this.calculateDate.bind(this);
-        this.calculateDate2 = this.calculateDate2.bind(this);
     }
 
     calculateData() {
@@ -24,35 +23,13 @@ class GraphicComponent extends Component {
                 hot_w: hot_w,
                 cold_w: cold_w,
                 gas: gas,
-                date: this.calculateDate(date)
+                date: dateHelper.dateToString(date)
             });
         }
         return result;
     }
 
-    calculateDate(date) {
-        var months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
-        var splittedDate = date.split("-");
-        return months[parseInt(splittedDate[1]) -1] + " " + splittedDate[0];
-    }
-
-        calculateDate2(date, rt, rrt) {
-            console.log(date);
-            console.log(rt);
-            console.log(rrt);
-            return date;
-        }
-
     render() {
-        const data = [
-              {name: 'Page A', uv: 4000},
-              {name: 'Page B', uv: 3000},
-              {name: 'Page C', uv: 2000},
-              {name: 'Page D', uv: 2780},
-              {name: 'Page E', uv: 1890},
-              {name: 'Page F', uv: 2390},
-              {name: 'Page G', uv: 3490}
-        ];
         const legend_hot = [
               { value: 'Расход горячей воды', type: 'line' }
         ];
@@ -95,7 +72,6 @@ class GraphicComponent extends Component {
 }
 
 function mapStateToProps (state) {
-    console.log("Graphic", state);
     return {
          meters: state.meters
     };
