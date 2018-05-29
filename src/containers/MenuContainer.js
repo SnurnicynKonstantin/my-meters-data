@@ -26,7 +26,7 @@ class MenuContainer extends Component {
                     <Link to={`/`} className="py-2 col">Лого</Link>
                     <Link to={`/`} className="py-2">Мои показания</Link>
                     <Link to={`/`} className="py-2">Показания по дому</Link>
-                    <Link to={`/login`} className="col-md-3 offset-md-3" onClick={this.logoutHandler}>Выход</Link>
+                    <Link to={`/login`} className="col-md-1 offset-md-6" onClick={this.logoutHandler}>Выход</Link>
                 </div>
             </nav>
         );

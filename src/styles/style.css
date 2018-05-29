@@ -2,3 +2,11 @@
     margin: 0 auto;
     width: 100px;
 }
+
+.meters-add-btn {
+    margin-bottom: 12px;
+}
+
+.my-custom-modal-header span {
+    width: 100%;
+}
