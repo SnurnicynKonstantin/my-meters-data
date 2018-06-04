@@ -28,3 +28,31 @@ export function metersFail() {
         type: types.METERS_FAIL
     };
 }
+
+export function createMeters(meters) {
+    return function(dispatch) {
+        return metersApi.createMeters(meters).then(res=>res.json()).then(res => {
+                    if(res.status == true) {
+                        dispatch(createMetersSuccess(res.meters));
+                    } else {
+                        dispatch(createMetersFail());
+                    }
+                }).catch(error => {
+                    console.log("ERROR", error);
+                    throw(error);
+                });
+    }
+}
+
+export function createMetersSuccess(meters) {
+    return {
+        type: types.CREATE_METERS_SUCCESS,
+        meters
+    };
+}
+
+export function createMetersFail() {
+    return {
+        type: types.CREATE_METERS_FAIL
+    };
+}

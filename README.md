@@ -16,11 +16,12 @@ Service for collecting meter readings
 11) Create tables (http://allenfang.github.io/react-bootstrap-table/example)
 12) Add room number
 13) Graphics (http://recharts.org/en-US/guide/installation)
+14) Fix position of links in menu
 
 
 - откорректировать alert на странице login
+- сделать графики тянущимися
 - сменить иконку календаря
-- выровнять ссылки в меню
 - создать страницу личного кабинета (https://getbootstrap.com/docs/4.1/examples/dashboard/#)
 - создать страницу администратора
 - отображать показания жильца

@@ -10,3 +10,6 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 
 export const METERS_SUCCESS = 'METERS_SUCCESS';
 export const METERS_FAIL = 'METERS_FAIL';
+
+export const CREATE_METERS_SUCCESS = 'METERS_SUCCESS';
+export const CREATE_METERS_FAIL = 'METERS_FAIL';
