@@ -16,7 +16,9 @@ class TableComponent extends Component {
             date: moment(),
             hot_w: "",
             cold_w: "",
-            gas: ""
+            gas: "",
+            month: moment().format('M'),
+            year: moment().format('YYYY')
         };
         let { dispatch } = this.props;
         this.metersActions = bindActionCreators(metersActions, dispatch);
@@ -28,6 +30,7 @@ class TableComponent extends Component {
         this.hotWChange = this.hotWChange.bind(this);
         this.coldWChange = this.coldWChange.bind(this);
         this.gasChange = this.gasChange.bind(this);
+        this.onBeforeSaveCell = this.onBeforeSaveCell.bind(this);
     }
 
     createCustomInsertButton(onClick) {
@@ -49,8 +52,13 @@ class TableComponent extends Component {
     }
 
     handleSave(save) {
+    save();
         console.log('This is my custom function for save event', this.state);
         this.metersActions.createMeters(this.state);
+        this.setState({hot_w: ""});
+        this.setState({cold_w: ""});
+        this.setState({gas: ""});
+        this.setState({date: moment()});
     }
 
     createCustomModalFooter(closeModal, save) {
@@ -80,9 +88,9 @@ class TableComponent extends Component {
     }
 
     handleChange(date) {
-        this.setState({
-            date: date.format("DD/MM/YYYY")
-        });
+        this.setState({date: date});
+        this.setState({month: date.format('M')});
+        this.setState({year: date.format('YYYY')});
         console.log("State", this.state);
     }
 
@@ -114,6 +122,18 @@ class TableComponent extends Component {
         );
     }
 
+    onBeforeSaveCell(row, cellName, cellValue) {
+        console.log("Row", row);
+        console.log("CellName", cellName);
+        console.log("CellValue", cellValue);
+
+        if(row[cellName] != cellValue) {
+            console.log("Update data");
+        }
+
+        return false;
+    }
+
 
 
     render() {
@@ -124,24 +144,37 @@ class TableComponent extends Component {
           insertModalBody: this.createCustomModalBody
         };
 
+
+        const cellEditProp = {
+            mode: 'dbclick',
+            blurToSave: true,
+            beforeSaveCell: this.onBeforeSaveCell
+        };
+
         var metersArray = [];
         if(Array.isArray(this.props.meters)) {
             this.props.meters.forEach(function(element) {
                 metersArray.push({
+                    id: element.id,
                     hot_w: element.hot_w,
+                    hot_bck: element.hot_bck,
                     cold_w: element.cold_w,
+                    cold_bck: element.hot_bck,
                     gas: element.gas,
+                    gas_bck: element.hot_bck,
+                    month: element.month,
+                    year: element.year,
                     date: dateHelper.dateToString(element.month, element.year)
                 });
             });
         }
 
         return  (
-            <BootstrapTable data={metersArray}  options={ options } striped hover insertRow>
-                  <TableHeaderColumn isKey dataField='hot_w'>Горячая вода</TableHeaderColumn>
+            <BootstrapTable data={metersArray}  options={ options } cellEdit={ cellEditProp } striped hover insertRow>
+                  <TableHeaderColumn dataField='hot_w'>Горячая вода</TableHeaderColumn>
                   <TableHeaderColumn dataField='cold_w'>Холодная вода</TableHeaderColumn>
                   <TableHeaderColumn dataField='gas'>Газ</TableHeaderColumn>
-                  <TableHeaderColumn dataField='date'>Дата</TableHeaderColumn>
+                  <TableHeaderColumn dataField='date' isKey>Дата</TableHeaderColumn>
               </BootstrapTable>
         );
     }

@@ -1,5 +1,5 @@
 const getServerApi = 'http://localhost/getMeters.php';
-const saveServerApi = 'http://localhost/createMeters.php';
+const saveServerApi = 'http://localhost/createMeters2.php';
 
 class MetersApi {
 

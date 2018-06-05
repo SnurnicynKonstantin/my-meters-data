@@ -18,12 +18,11 @@ class GraphicComponent extends Component {
             var hot_w = ((parseInt(meters[i + 1].hot_w) + parseInt(meters[i + 2].hot_w)) / 2) - ((parseInt(meters[i].hot_w) + parseInt(meters[i + 1].hot_w)) / 2);
             var cold_w = ((parseInt(meters[i + 1].cold_w) + parseInt(meters[i + 2].cold_w)) / 2) - ((parseInt(meters[i].cold_w) + parseInt(meters[i + 1].cold_w)) / 2);
             var gas = ((parseInt(meters[i + 1].gas) + parseInt(meters[i + 2].gas)) / 2) - ((parseInt(meters[i].gas) + parseInt(meters[i + 1].gas)) / 2);
-            var date = meters[i + 1].date
             result.push({
                 hot_w: hot_w,
                 cold_w: cold_w,
                 gas: gas,
-                date: dateHelper.dateToString(date)
+                date: dateHelper.dateToString(meters[i + 1].month, meters[i + 1].year)
             });
         }
         return result;
