@@ -6,6 +6,9 @@ import * as metersActions from '../../actions/metersActions';
 import dateHelper from '../../helpers/dateHelper';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import Alert from 'react-s-alert';
+import 'react-s-alert/dist/s-alert-default.css';
+import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 import 'react-datepicker/dist/react-datepicker.css';
 
 class TableComponent extends Component {
@@ -123,18 +126,28 @@ class TableComponent extends Component {
     }
 
     onBeforeSaveCell(row, cellName, cellValue) {
-        console.log("Row", row);
-        console.log("CellName", cellName);
-        console.log("CellValue", cellValue);
-
         if(row[cellName] != cellValue) {
-            console.log("Update data");
-        }
+            this.metersActions.updateMeters(row.id, cellName, cellValue)
+            .then(function(result) {
+                if(result.status) {
+                    Alert.success(result.message, {
+                        position: 'top-right',
+                        effect: 'slide',
+                        offset: 50
+                    });
+                } else {
+                    Alert.error(result.message, {
+                        position: 'top-right',
+                        effect: 'slide',
+                        offset: 50
+                    });
+                }
+                console.log("Update data", result);
+            });
 
+        }
         return false;
     }
-
-
 
     render() {
         const options = {
@@ -181,9 +194,9 @@ class TableComponent extends Component {
 }
 
 function mapStateToProps (state) {
-    console.log("Table", state);
+    console.log("Tablee", state);
     return {
-         meters: state.meters
+         meters: state.meters,
     };
 }
 

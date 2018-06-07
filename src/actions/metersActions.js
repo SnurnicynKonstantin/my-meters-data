@@ -56,3 +56,32 @@ export function createMetersFail() {
         type: types.CREATE_METERS_FAIL
     };
 }
+
+export function updateMeters(id, fieldName, fieldValue) {
+    return function(dispatch) {
+        return metersApi.updateMeters(id, fieldName, fieldValue).then(res=>res.json()).then(res => {
+                    if(res.status == true) {
+                        dispatch(updateMetersSuccess(res.meters));
+                    } else {
+                        dispatch(updateMetersFail());
+                    }
+                    return {"status": res.status, "message": res.message}
+                }).catch(error => {
+                    console.log("ERROR", error);
+                    throw(error);
+                });
+    }
+}
+
+export function updateMetersSuccess(meters) {
+    return {
+        type: types.UPDATE_METERS_SUCCESS,
+        meters
+    };
+}
+
+export function updateMetersFail() {
+    return {
+        type: types.UPDATE_METERS_FAIL
+    };
+}

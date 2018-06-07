@@ -1,5 +1,6 @@
 const getServerApi = 'http://localhost/getMeters.php';
-const saveServerApi = 'http://localhost/createMeters2.php';
+const createServerApi = 'http://localhost/createMeters2.php';
+const updateServerApi = 'http://localhost/updateMeters.php';
 
 class MetersApi {
 
@@ -14,8 +15,8 @@ class MetersApi {
     }
 
     static createMeters(meters) {
-    console.log("In meters api", meters);
-        return fetch(saveServerApi + "?token=" + localStorage.getItem('token') +
+    console.log("In meters api for create", meters);
+        return fetch(createServerApi + "?token=" + localStorage.getItem('token') +
             "&hot_w=" + meters.hot_w +
             "&cold_w=" + meters.cold_w +
             "&gas=" + meters.gas +
@@ -28,6 +29,19 @@ class MetersApi {
             }
         });
     }
+
+    static updateMeters(id, fieldName, fieldValue) {
+            return fetch(updateServerApi + "?token=" + localStorage.getItem('token') +
+                "&field_id=" + id +
+                "&field_name=" + fieldName +
+                "&field_value=" + fieldValue, {
+                method: "GET",
+                headers: {
+                    'Accept': 'application/json',
+                    "content-type": "application/x-www-form-urlencoded"
+                }
+            });
+        }
 
 }
 

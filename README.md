@@ -17,16 +17,17 @@ Service for collecting meter readings
 12) Add room number
 13) Graphics (http://recharts.org/en-US/guide/installation)
 14) Fix position of links in menu
+15) Opportunity to edit meters
+16) Show meters of user
 
 
-- откорректировать alert на странице login
+- откорректировать alert на странице login (https://github.com/juliancwirko/react-s-alert)
 - сделать графики тянущимися
 - сменить иконку календаря
 - создать страницу личного кабинета (https://getbootstrap.com/docs/4.1/examples/dashboard/#)
 - создать страницу администратора
-- отображать показания жильца
-- возможность добавить показание
-- возможность изменить показание
+- возможность создать показание
+- довести до ума скрипт изменения показаний
 - возможность удалить показание
 - отображать показания за интервал времени. (https://github.com/skratchdot/react-bootstrap-daterangepicker)
 - отображать показания на странице администратора.

@@ -8,7 +8,7 @@ export default function metersReducer(state = {}, action) {
     switch (action.type) {
 
         case types.METERS_SUCCESS: {
-            return action.meters;
+            return action.meters
         }
 
         case types.METERS_FAIL: {
