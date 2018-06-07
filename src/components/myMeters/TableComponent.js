@@ -54,10 +54,25 @@ class TableComponent extends Component {
         );
     }
 
-    handleSave(save) {
-    save();
+    handleSave() {
         console.log('This is my custom function for save event', this.state);
-        this.metersActions.createMeters(this.state);
+        this.metersActions.createMeters(this.state)
+        .then(function(result) {
+            if(result.status) {
+                Alert.success(result.message, {
+                    position: 'top-right',
+                    effect: 'slide',
+                    offset: 50
+                });
+            } else {
+                Alert.error(result.message, {
+                    position: 'top-right',
+                    effect: 'slide',
+                    offset: 50
+                });
+            }
+            console.log("Create data", result);
+        });
         this.setState({hot_w: ""});
         this.setState({cold_w: ""});
         this.setState({gas: ""});
@@ -74,7 +89,8 @@ class TableComponent extends Component {
                 saveBtnContextual='btn-success'
                 closeBtnClass='my-close-btn-class'
                 saveBtnClass='my-save-btn-class'
-                onSave={ this.handleSave }/>
+                onSave={ closeModal }
+                beforeSave={ this.handleSave }/>
         )
     }
 

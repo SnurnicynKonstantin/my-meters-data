@@ -37,6 +37,7 @@ export function createMeters(meters) {
                     } else {
                         dispatch(createMetersFail());
                     }
+                    return {"status": res.status, "message": res.message}
                 }).catch(error => {
                     console.log("ERROR", error);
                     throw(error);

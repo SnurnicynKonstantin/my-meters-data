@@ -1,5 +1,5 @@
 const getServerApi = 'http://localhost/getMeters.php';
-const createServerApi = 'http://localhost/createMeters2.php';
+const createServerApi = 'http://localhost/createMeters.php';
 const updateServerApi = 'http://localhost/updateMeters.php';
 
 class MetersApi {
@@ -15,7 +15,6 @@ class MetersApi {
     }
 
     static createMeters(meters) {
-    console.log("In meters api for create", meters);
         return fetch(createServerApi + "?token=" + localStorage.getItem('token') +
             "&hot_w=" + meters.hot_w +
             "&cold_w=" + meters.cold_w +
