@@ -10,3 +10,7 @@
 .my-custom-modal-header span {
     width: 100%;
 }
+
+.feather-calendar {
+    margin-bottom: -5px;
+}
