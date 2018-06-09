@@ -6,9 +6,14 @@ import dateHelper from '../helpers/dateHelper';
 import * as metersActions from '../actions/metersActions';
 import Table from '../components/myMeters/TableComponent';
 import Graphic from '../components/myMeters/GraphicComponent';
-import DateRangePicker from 'react-bootstrap-daterangepicker';
+//import DateRangePicker from 'react-bootstrap-daterangepicker';
+import { DateRangePicker } from 'react-dates';
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-daterangepicker/daterangepicker.css';
+import { withStyles, withStylesPropTypes, css } from 'react-with-styles';
+import isSameDay from '../helpers/isSameDay';
 
 class MyMetersContainer extends Component {
 
@@ -17,52 +22,81 @@ class MyMetersContainer extends Component {
         let { dispatch } = this.props;
         this.metersActions = bindActionCreators(metersActions, dispatch);
 
-        this.onApplyHandler = this.onApplyHandler.bind(this);
         this.setDateToStorage = this.setDateToStorage.bind(this);
-        this.setDateToStorage(moment().subtract(12, 'months').format('M'),
+        this.setDateToStorage(1,
+                              moment().subtract(12, 'months').format('M'),
                               moment().subtract(12, 'months').format('YYYY'),
+                              1,
                               moment().format('M'),
-                              moment().format('YYYY'),);
+                              moment().format('YYYY'));
+        this.onDatesChange = this.onDatesChange.bind(this);
+        this.onFocusChange = this.onFocusChange.bind(this);
+            this.state = {
+                focusedInput: null
+            };
     }
 
     componentDidMount() {
         this.metersActions.getMeters();
     }
 
-    onApplyHandler(event, picker) {
-        this.setDateToStorage(picker.startDate.format('M'),
-                              picker.startDate.format('YYYY'),
-                              picker.endDate.format('M'),
-                              picker.endDate.format('YYYY'));
-    }
-
-    setDateToStorage(startMonth, startYear, endMonth, endYear) {
+    setDateToStorage(startDay, startMonth, startYear, endDay, endMonth, endYear) {
+        localStorage.setItem('startDay', startDay);
         localStorage.setItem('startMonth', startMonth);
         localStorage.setItem('startYear', startYear);
+        localStorage.setItem('endDay', endDay);
         localStorage.setItem('endMonth', endMonth);
         localStorage.setItem('endYear', endYear);
     }
 
+    onDatesChange({ startDate, endDate }) {
+        this.setDateToStorage(startDate.format('D'),
+                              startDate.format('M'),
+                              startDate.format('YYYY'),
+                              endDate.format('D'),
+                              endDate.format('M'),
+                              endDate.format('YYYY'));
+    }
+
+    onFocusChange(focusedInput) {
+        this.setState({ focusedInput });
+    }
+
     render() {
+        var startDay = localStorage.getItem('startDay');
         var startMonth = localStorage.getItem('startMonth');
         var startYear = localStorage.getItem('startYear');
+        var endDay = localStorage.getItem('endDay');
         var endMonth = localStorage.getItem('endMonth');
         var endYear = localStorage.getItem('endYear');
-        var startDate = "1/" + startMonth + "/" + startYear;
-        var endDate = "1/" + endMonth + "/" + endYear;
+        var startDate = startDay + "/" + startMonth + "/" + startYear;
+        var endDate = endDay + "/" + endMonth + "/" + endYear;
         var startStringDate = dateHelper.dateToString(startMonth, startYear);
         var endStringDate = dateHelper.dateToString(endMonth, endYear);
+        ///
+        const { focusedInput } = this.state;
+        ///
         return (
             <div className="container">
                <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                    <h1 className="h2">Мои показания (кв.{localStorage.getItem('roomNumber')})</h1>
                    <div className="btn-toolbar mb-2 mb-md-0">
-                       <DateRangePicker startDate={startDate} endDate={endDate} onApply={this.onApplyHandler} showDropdowns>
-                           <button className="btn btn-sm btn-outline-primary dropdown-toggle">
-                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                               Интервал (c {startStringDate} по {endStringDate})
-                           </button>
-                       </DateRangePicker>
+                       <DateRangePicker
+                                       onDatesChange={this.onDatesChange}
+                                       onFocusChange={this.onFocusChange}
+                                       enableOutsideDays={true}
+                                       isDayBlocked={()=>false}
+                                       isOutsideRange={() => false}
+                                       isDayHighlighted={()=>false}
+                                       focusedInput={focusedInput}
+                                       showDefaultInputIcon={true}
+                                       startDate={moment(startDate, 'DD/MM/YYYY')}
+                                       endDate={moment(endDate, 'DD/MM/YYYY')}
+                                       startDateId="datepicker_start_home"
+                                       endDateId="datepicker_end_home"
+                                       startDatePlaceholderText="Check In"
+                                       endDatePlaceholderText="Check Out"
+                                   />
                        <div className="btn-group ml-2">
                            <button className="btn btn-sm btn-outline-primary">Share</button>
                            <button className="btn btn-sm btn-outline-primary">Экспорт в Excel</button>
