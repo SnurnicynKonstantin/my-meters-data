@@ -6,7 +6,6 @@ import dateHelper from '../helpers/dateHelper';
 import * as metersActions from '../actions/metersActions';
 import Table from '../components/myMeters/TableComponent';
 import Graphic from '../components/myMeters/GraphicComponent';
-//import DateRangePicker from 'react-bootstrap-daterangepicker';
 import { DateRangePicker } from 'react-dates';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
@@ -14,6 +13,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-daterangepicker/daterangepicker.css';
 import { withStyles, withStylesPropTypes, css } from 'react-with-styles';
 import isSameDay from '../helpers/isSameDay';
+moment.locale('ru')
 
 class MyMetersContainer extends Component {
 
@@ -56,6 +56,7 @@ class MyMetersContainer extends Component {
                               endDate.format('D'),
                               endDate.format('M'),
                               endDate.format('YYYY'));
+        this.metersActions.getMeters();
     }
 
     onFocusChange(focusedInput) {
@@ -96,6 +97,7 @@ class MyMetersContainer extends Component {
                                        endDateId="datepicker_end_home"
                                        startDatePlaceholderText="Check In"
                                        endDatePlaceholderText="Check Out"
+                                       displayFormat="MMM YYYY"
                                    />
                        <div className="btn-group ml-2">
                            <button className="btn btn-sm btn-outline-primary">Share</button>

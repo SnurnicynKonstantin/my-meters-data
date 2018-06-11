@@ -5,7 +5,11 @@ const updateServerApi = 'http://localhost/updateMeters.php';
 class MetersApi {
 
     static getMeters() {
-        return fetch(getServerApi + "?token=" + localStorage.getItem('token'), {
+        return fetch(getServerApi + "?token=" + localStorage.getItem('token') +
+            "&startMonth=" + localStorage.getItem('startMonth') +
+            "&startYear=" + localStorage.getItem('startYear') +
+            "&endMonth=" + localStorage.getItem('endMonth') +
+            "&endYear=" + localStorage.getItem('endYear'), {
             method: "GET",
             headers: {
                 'Accept': 'application/json',
@@ -19,8 +23,12 @@ class MetersApi {
             "&hot_w=" + meters.hot_w +
             "&cold_w=" + meters.cold_w +
             "&gas=" + meters.gas +
-            "&month=" + 9 +
-            "&year=" + 2006, {
+            "&month=" + meters.month +
+            "&year=" + meters.year +
+            "&startMonth=" + localStorage.getItem('startMonth') +
+            "&startYear=" + localStorage.getItem('startYear') +
+            "&endMonth=" + localStorage.getItem('endMonth') +
+            "&endYear=" + localStorage.getItem('endYear'), {
             method: "GET",
             headers: {
                 'Accept': 'application/json',
@@ -33,7 +41,11 @@ class MetersApi {
             return fetch(updateServerApi + "?token=" + localStorage.getItem('token') +
                 "&field_id=" + id +
                 "&field_name=" + fieldName +
-                "&field_value=" + fieldValue, {
+                "&field_value=" + fieldValue +
+                "&startMonth=" + localStorage.getItem('startMonth') +
+                "&startYear=" + localStorage.getItem('startYear') +
+                "&endMonth=" + localStorage.getItem('endMonth') +
+                "&endYear=" + localStorage.getItem('endYear'), {
                 method: "GET",
                 headers: {
                     'Accept': 'application/json',

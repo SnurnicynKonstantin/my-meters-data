@@ -14,3 +14,31 @@
 .feather-calendar {
     margin-bottom: -5px;
 }
+
+/*Date time picker*/
+
+.CalendarDay__selected, .CalendarDay__selected:active, .CalendarDay__selected:hover {
+    background: #007bff;
+    border: 1px solid #ffffff;
+}
+
+.CalendarDay__selected_span {
+    background: #54a6ff;
+    border: 1px solid #ffffff;
+}
+
+.CalendarDay__selected_span:active, .CalendarDay__selected_span:hover {
+    background: #007bff;
+}
+
+.DateInput_input__focused {
+    border-bottom: 2px solid #007bff;
+}
+
+.DayPickerKeyboardShortcuts_show__bottomRight{
+    border-right: 33px solid #54a6ff;
+}
+
+.DayPickerKeyboardShortcuts_show__bottomRight:hover {
+    border-right: 33px solid #007bff;
+}

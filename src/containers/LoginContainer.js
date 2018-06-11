@@ -32,7 +32,8 @@ class LoginContainer extends Component {
    render() {
 
         if(localStorage.getItem('token')) {
-            this.props.history.push('/');
+//            this.props.history.push('/');
+            this.context.router.history.push('/');
         }
 
        const alertElem = <div className="alert alert-danger alert-dismissible fade show"  role="alert">
