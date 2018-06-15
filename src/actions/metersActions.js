@@ -4,11 +4,12 @@ import * as types from './actionTypes';
 export function getMeters() {
     return function(dispatch) {
         return metersApi.getMeters().then(res=>res.json()).then(res => {
-                    if(res.status == true) {
-                        dispatch(metersSuccess(res.meters));
-                    } else {
-                        dispatch(metersFail());
-                    }
+//                    if(res.status == true) {
+//                        dispatch(metersSuccess(res.meters));
+//                    } else {
+//                        dispatch(metersFail());
+//                    }
+                    dispatch(metersSuccess(res.meters));
                 }).catch(error => {
                     console.log("ERROR", error);
                     throw(error);
@@ -32,11 +33,12 @@ export function metersFail() {
 export function createMeters(meters) {
     return function(dispatch) {
         return metersApi.createMeters(meters).then(res=>res.json()).then(res => {
-                    if(res.status == true) {
-                        dispatch(createMetersSuccess(res.meters));
-                    } else {
-                        dispatch(createMetersFail());
-                    }
+//                    if(res.status == true) {
+//                        dispatch(createMetersSuccess(res.meters));
+//                    } else {
+//                        dispatch(createMetersFail());
+//                    }
+                      dispatch(createMetersSuccess(res.meters));
                     return {"status": res.status, "message": res.message}
                 }).catch(error => {
                     console.log("ERROR", error);
@@ -61,11 +63,12 @@ export function createMetersFail() {
 export function updateMeters(id, fieldName, fieldValue) {
     return function(dispatch) {
         return metersApi.updateMeters(id, fieldName, fieldValue).then(res=>res.json()).then(res => {
-                    if(res.status == true) {
-                        dispatch(updateMetersSuccess(res.meters));
-                    } else {
-                        dispatch(updateMetersFail());
-                    }
+//                    if(res.status == true) {
+//                        dispatch(updateMetersSuccess(res.meters));
+//                    } else {
+//                        dispatch(updateMetersFail());
+//                    }
+                    dispatch(updateMetersSuccess(res.meters));
                     return {"status": res.status, "message": res.message}
                 }).catch(error => {
                     console.log("ERROR", error);

@@ -12,6 +12,11 @@ module.exports = {
         'webpack-hot-middleware/client?reload=true',
         path.resolve(__dirname, 'src/index')
     ],
+    node: {fs: 'empty'},
+    externals: [
+      {'./cptable': 'var cptable'},
+      {'./jszip': 'jszip'}
+    ],
     target: 'web',
     output: {
         path: __dirname + '/dist',

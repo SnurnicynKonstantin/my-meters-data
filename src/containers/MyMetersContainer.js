@@ -6,6 +6,7 @@ import dateHelper from '../helpers/dateHelper';
 import * as metersActions from '../actions/metersActions';
 import Table from '../components/myMeters/TableComponent';
 import Graphic from '../components/myMeters/GraphicComponent';
+import Excel from '../components/myMeters/ExcelComponent';
 import { DateRangePicker } from 'react-dates';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
@@ -99,10 +100,8 @@ class MyMetersContainer extends Component {
                                        endDatePlaceholderText="Check Out"
                                        displayFormat="MMM YYYY"
                                    />
-                       <div className="btn-group ml-2">
-                           <button className="btn btn-sm btn-outline-primary">Share</button>
-                           <button className="btn btn-sm btn-outline-primary">Экспорт в Excel</button>
-                       </div>
+
+                           <Excel meters={this.props.meters}></Excel>
                    </div>
                </div>
                <Table meters={this.props.meters}></Table>
