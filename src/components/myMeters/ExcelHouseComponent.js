@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Workbook from 'react-excel-workbook'
 import dateHelper from '../../helpers/dateHelper';
 
-class ExcelComponent  extends Component {
+class ExcelHouseComponent  extends Component {
 
     render() {
         const fileName = "Мои показания с " + dateHelper.dateToString(localStorage.getItem('startMonth'), localStorage.getItem('startYear'))
@@ -40,4 +40,4 @@ function mapStateToProps (state) {
     };
 }
 
-export default connect(mapStateToProps)(ExcelComponent);
+export default connect(mapStateToProps)(ExcelHouseComponent);

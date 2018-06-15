@@ -25,7 +25,7 @@ class MenuContainer extends Component {
                 <div className="container d-flex flex-column flex-md-row justify-content-start">
                     <Link to={`/`} className="py-2 col">Лого</Link>
                     <Link to={`/`} className="py-2">Мои показания</Link>
-                    <Link to={`/`} className="py-2">Показания по дому</Link>
+                    <Link to={`/house`} className="py-2">Показания по дому</Link>
                     <Link to={`/login`} className="col-md-1 offset-md-6" onClick={this.logoutHandler}>Выход</Link>
                 </div>
             </nav>

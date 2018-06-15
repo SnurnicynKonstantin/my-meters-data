@@ -6,8 +6,20 @@ import Head from './HeadContainer';
 import Content from './ContentContainer';
 import Footer from './FooterContainer';
 import Basket from '../components/basket/BasketComponent';
+import moment from 'moment';
+import dateHelper from '../helpers/dateHelper';
 
 class App extends Component {
+
+    constructor(props) {
+        super(props);
+        dateHelper.setDateToStorage(1,
+                              moment().subtract(12, 'months').format('M'),
+                              moment().subtract(12, 'months').format('YYYY'),
+                              1,
+                              moment().format('M'),
+                              moment().format('YYYY'));
+    }
 
     render() {
         return (
