@@ -14,6 +14,12 @@ class dateHelper {
         localStorage.setItem('endYear', endYear);
     }
 
+    static setSingleDateToStorage(day, month, year) {
+        localStorage.setItem('administrativeDay', day);
+        localStorage.setItem('administrativeMonth', month);
+        localStorage.setItem('administrativeYear', year);
+    }
+
 }
 
 export default dateHelper;

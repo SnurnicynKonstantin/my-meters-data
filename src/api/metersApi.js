@@ -1,6 +1,7 @@
 const getServerApi = 'http://localhost/getMeters.php';
 const createServerApi = 'http://localhost/createMeters.php';
 const updateServerApi = 'http://localhost/updateMeters.php';
+const getAdministrativeServerApi = 'http://localhost/getMetersAdministrative.php';
 
 class MetersApi {
 
@@ -46,6 +47,18 @@ class MetersApi {
                 "&startYear=" + localStorage.getItem('startYear') +
                 "&endMonth=" + localStorage.getItem('endMonth') +
                 "&endYear=" + localStorage.getItem('endYear'), {
+                method: "GET",
+                headers: {
+                    'Accept': 'application/json',
+                    "content-type": "application/x-www-form-urlencoded"
+                }
+            });
+        }
+
+    static getAdministrativeMeters() {
+            return fetch(getAdministrativeServerApi + "?token=" + localStorage.getItem('token') +
+                "&administrativeMonth=" + localStorage.getItem('administrativeMonth') +
+                "&administrativeYear=" + localStorage.getItem('administrativeYear'), {
                 method: "GET",
                 headers: {
                     'Accept': 'application/json',

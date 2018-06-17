@@ -210,7 +210,6 @@ class TableComponent extends Component {
 }
 
 function mapStateToProps (state) {
-    console.log("Tablee", state);
     return {
          meters: state.meters,
     };

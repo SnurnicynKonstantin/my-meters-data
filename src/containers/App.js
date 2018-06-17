@@ -3,7 +3,6 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import Menu from './MenuContainer';
 import Head from './HeadContainer';
-import Content from './ContentContainer';
 import Footer from './FooterContainer';
 import Basket from '../components/basket/BasketComponent';
 import moment from 'moment';
@@ -19,6 +18,10 @@ class App extends Component {
                               1,
                               moment().format('M'),
                               moment().format('YYYY'));
+
+        dateHelper.setSingleDateToStorage(1,
+                                      moment().format('M'),
+                                      moment().format('YYYY'));
     }
 
     render() {

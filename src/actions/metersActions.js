@@ -89,3 +89,28 @@ export function updateMetersFail() {
         type: types.UPDATE_METERS_FAIL
     };
 }
+
+export function getAdministrativeMeters() {
+    return function(dispatch) {
+        return metersApi.getAdministrativeMeters().then(res=>res.json()).then(res => {
+                    dispatch(getAdministrativeMetersSuccess(res.meters, res.street));
+                }).catch(error => {
+                    console.log("ERROR", error);
+                    throw(error);
+                });
+    }
+}
+
+export function getAdministrativeMetersSuccess(meters, street) {
+    return {
+        type: types.GET_ADMINISTRATIVE_METERS_SUCCESS,
+        meters,
+        street
+    };
+}
+
+export function getAdministrativeMetersFail() {
+    return {
+        type: types.GET_ADMINISTRATIVE_METERS_FAIL
+    };
+}

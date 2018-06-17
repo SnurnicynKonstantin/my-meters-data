@@ -24,20 +24,21 @@ Service for collecting meter readings
 19) Opportunity to create meters - Done
 20) Meters by time interval (https://github.com/skratchdot/react-bootstrap-daterangepicker) - DOne
 21) Opportunity to edit meters
+22) Excel report (https://www.npmjs.com/package/react-excel-workbook)
+23) Create personal page (https://getbootstrap.com/docs/4.1/examples/dashboard/#)
+24) Administrative page with meters
+25) Filter by month on administrative page (https://github.com/airbnb/react-dates)
 
 
 - откорректировать alert на странице login (https://github.com/juliancwirko/react-s-alert)
 - сделать графики тянущимися
-- создать страницу личного кабинета (https://getbootstrap.com/docs/4.1/examples/dashboard/#)
 - создать страницу администратора
 - возможность удалить показание
-- отображать показания на странице администратора.
-- фильтр по месяцам на странице администратора (https://github.com/airbnb/react-dates)
 - блокировать показания
 - информация по дому
 - изменять информацию по дому
 - изменение пароля
-- отчёт в excel (https://www.npmjs.com/package/react-excel-workbook)
 - придумать логотип
 - добавить логирование запросов
 - пофиксить переход после входа
+- пофиксить хедер на странице администратора при большой длине адреса
