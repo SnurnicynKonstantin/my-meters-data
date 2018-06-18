@@ -42,3 +42,7 @@
 .DayPickerKeyboardShortcuts_show__bottomRight:hover {
     border-right: 33px solid #007bff;
 }
+
+.administrative-title {
+    width: 700px;
+}

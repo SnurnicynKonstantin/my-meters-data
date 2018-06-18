@@ -13,6 +13,7 @@ class ExcelHouseComponent  extends Component {
         if(Array.isArray(this.props.meters)) {
             this.props.meters.forEach(function(element) {
                 metersArray.push({
+                    energy: element.energy,
                     hot_w: element.hot_w,
                     cold_w: element.cold_w,
                     gas: element.gas,
@@ -24,6 +25,7 @@ class ExcelHouseComponent  extends Component {
         return (
             <Workbook filename={fileName} element={<button style={{marginLeft: '10px'}} className="btn btn-lg btn-outline-primary">Экспорт в Excel</button>}>
                 <Workbook.Sheet data={metersArray} name="Мои показания">
+                    <Workbook.Column label="Электроэнергия" value={row => row.energy}/>
                     <Workbook.Column label="Горячая вода" value={row => row.hot_w}/>
                     <Workbook.Column label="Холодная вода" value={row => row.cold_w}/>
                     <Workbook.Column label="Газ" value={row => row.gas}/>

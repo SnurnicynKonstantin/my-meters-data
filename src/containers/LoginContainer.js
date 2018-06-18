@@ -1,6 +1,7 @@
 import React , { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
+import { browserHistory } from 'react-router'
 import * as loginActions from '../actions/loginActions';
 
 class LoginContainer extends Component {
@@ -33,7 +34,8 @@ class LoginContainer extends Component {
 
         if(localStorage.getItem('token')) {
 //            this.props.history.push('/');
-            this.context.router.history.push('/');
+//            this.context.router.history.push('/');
+            browserHistory.push('/');
         }
 
        const alertElem = <div className="alert alert-danger alert-dismissible fade show"  role="alert">

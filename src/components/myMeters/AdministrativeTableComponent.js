@@ -20,6 +20,7 @@ class AdministrativeTableComponent extends Component {
             this.props.meters.forEach(function(element) {
                 metersArray.push({
                     room: element.room,
+                    energy: element.energy,
                     hot_w: element.hot_w,
                     cold_w: element.cold_w,
                     gas: element.gas,
@@ -32,6 +33,7 @@ class AdministrativeTableComponent extends Component {
         return  (
             <BootstrapTable data={metersArray} striped hover>
                   <TableHeaderColumn dataField='room' isKey>Номер квартиры</TableHeaderColumn>
+                  <TableHeaderColumn dataField='energy'>Электроэнергия</TableHeaderColumn>
                   <TableHeaderColumn dataField='hot_w'>Горячая вода</TableHeaderColumn>
                   <TableHeaderColumn dataField='cold_w'>Холодная вода</TableHeaderColumn>
                   <TableHeaderColumn dataField='gas'>Газ</TableHeaderColumn>

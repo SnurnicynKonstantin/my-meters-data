@@ -2,9 +2,7 @@ import React , { PropTypes, Component } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import Menu from './MenuContainer';
-import Head from './HeadContainer';
 import Footer from './FooterContainer';
-import Basket from '../components/basket/BasketComponent';
 import moment from 'moment';
 import dateHelper from '../helpers/dateHelper';
 

@@ -17,6 +17,7 @@ class TableComponent extends Component {
         super(props);
         this.state = {
             date: moment(),
+            energy: "",
             hot_w: "",
             cold_w: "",
             gas: "",
@@ -30,6 +31,7 @@ class TableComponent extends Component {
         this.handleSave = this.handleSave.bind(this);
         this.createCustomModalBody = this.createCustomModalBody.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.energyChange = this.energyChange.bind(this);
         this.hotWChange = this.hotWChange.bind(this);
         this.coldWChange = this.coldWChange.bind(this);
         this.gasChange = this.gasChange.bind(this);
@@ -73,6 +75,7 @@ class TableComponent extends Component {
             }
             console.log("Create data", result);
         });
+        this.setState({energy: ""});
         this.setState({hot_w: ""});
         this.setState({cold_w: ""});
         this.setState({gas: ""});
@@ -92,6 +95,10 @@ class TableComponent extends Component {
                 onSave={ closeModal }
                 beforeSave={ this.handleSave }/>
         )
+    }
+
+    energyChange(event) {
+        this.setState({energy: event.target.value});
     }
 
     hotWChange(event) {
@@ -116,6 +123,10 @@ class TableComponent extends Component {
     createCustomModalBody(columns, validateState, ignoreEditable) {
         return (
             <div className="modal-body">
+                <div className="form-group">
+                    <label>Электроэнергия</label>
+                    <input type="text" placeholder="Электроэнергия" className="form-control editor edit-text" value={this.state.energy} onChange={this.energyChange}/>
+                </div>
                 <div className="form-group">
                     <label>Горячая вода</label>
                     <input type="text" placeholder="Горячая вода" className="form-control editor edit-text" value={this.state.hot_w} onChange={this.hotWChange}/>
@@ -185,6 +196,8 @@ class TableComponent extends Component {
             this.props.meters.forEach(function(element) {
                 metersArray.push({
                     id: element.id,
+                    energy: element.energy,
+                    energy_bck: element.energy_bck,
                     hot_w: element.hot_w,
                     hot_bck: element.hot_bck,
                     cold_w: element.cold_w,
@@ -200,6 +213,7 @@ class TableComponent extends Component {
 
         return  (
             <BootstrapTable data={metersArray}  options={ options } cellEdit={ cellEditProp } striped hover insertRow>
+                  <TableHeaderColumn dataField='energy'>Энергия</TableHeaderColumn>
                   <TableHeaderColumn dataField='hot_w'>Горячая вода</TableHeaderColumn>
                   <TableHeaderColumn dataField='cold_w'>Холодная вода</TableHeaderColumn>
                   <TableHeaderColumn dataField='gas'>Газ</TableHeaderColumn>

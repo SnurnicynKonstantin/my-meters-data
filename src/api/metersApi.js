@@ -21,6 +21,7 @@ class MetersApi {
 
     static createMeters(meters) {
         return fetch(createServerApi + "?token=" + localStorage.getItem('token') +
+            "&energy=" + meters.energy +
             "&hot_w=" + meters.hot_w +
             "&cold_w=" + meters.cold_w +
             "&gas=" + meters.gas +
